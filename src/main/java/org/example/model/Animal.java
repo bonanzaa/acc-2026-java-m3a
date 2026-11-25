@@ -39,4 +39,9 @@ public sealed abstract class Animal permits Dog,Cat,Bird {
     public String toString(){
         return id + " | " + name + " | " + age + " years old | " + getSpecies() + " | " + adoptionStatus;
     }
+
+    public void setAdoptionStatus(AdoptionStatus adoptionStatus) {
+        this.adoptionStatus = adoptionStatus;
+    }
 }
+
