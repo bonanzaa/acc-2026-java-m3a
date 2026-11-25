@@ -16,63 +16,63 @@ public class ConsoleMenu {
     }
 
     public void start() throws InputMismatchException {
-            try {
-            boolean active = true;
-            while (active) {
-                printMenu();
-                System.out.println("Choose what you want to do : ");
-                int number = scanner.nextInt();
-                switch (number) {
-                    case 0 -> active = false;
-                    case 1 -> {
-                        System.out.println("""
-                                Choose animal type:
-                                1. Dog
-                                2. Cat
-                                3. Bird""");
-                        int choose = scanner.nextInt();
-                        if (choose < 1 || choose > 3) {
-                            System.out.println("The number mus be from 1 to 3");
-                        } else {
-                            System.out.println("Enter animal name: ");
-                            String name = scanner.next();
-                            System.out.println("Enter animal age: ");
-                            int age = scanner.nextInt();
-                            switch (choose) {
-                                case 1 -> {
-                                    shelter.addAnimal(new Dog(new AnimalId(), name, 3));
-                                }
-                                case 2 -> {
-                                    shelter.addAnimal(new Cat(new AnimalId(), name, age));
-                                }
-                                case 3 -> {
-                                    shelter.addAnimal(new Bird(new AnimalId(), name, age));
-                                }
-                            }
+        try {
+        boolean active = true;
+        while (active) {
+        printMenu();
+        System.out.println("Choose what you want to do : ");
+        int number = scanner.nextInt();
+        switch (number) {
+            case 0 -> active = false;
+            case 1 -> {
+                System.out.println("""
+                        Choose animal type:
+                        1. Dog
+                        2. Cat
+                        3. Bird""");
+                int choose = scanner.nextInt();
+                if (choose < 1 || choose > 3) {
+                    System.out.println("The number mus be from 1 to 3");
+                } else {
+                    System.out.println("Enter animal name: ");
+                    String name = scanner.next();
+                    System.out.println("Enter animal age: ");
+                    int age = scanner.nextInt();
+                    switch (choose) {
+                        case 1 -> {
+                            shelter.addAnimal(new Dog(new AnimalId(), name, 3));
+                        }
+                        case 2 -> {
+                            shelter.addAnimal(new Cat(new AnimalId(), name, age));
+                        }
+                        case 3 -> {
+                            shelter.addAnimal(new Bird(new AnimalId(), name, age));
                         }
                     }
-                    case 2 -> {
-                        List<Animal> animals = shelter.getAllAnimals();
-                        animals.forEach(System.out::println);
-                    }
-                    case 3 -> {
-                        System.out.println("Select a species: ");
-                        String species = scanner.next();
-                        List<Animal> listedAnimals = shelter.findBySpecies(species);
-                        listedAnimals.forEach(System.out::println);
-                    }
-                    case 4 -> {
-                        List<Animal> availableAnimals = shelter.findAvailableAnimals();
-                        availableAnimals.forEach(System.out::println);
-                    }
-                    case 5 -> {
-                        System.out.println("Write an animal id: ");
-                        String id = scanner.next();
-                        shelter.markAsAdopted(id);
-                    }
-                    default -> {
-                        System.out.println("Input must be a number from 0 to 5");
-                    }
+                }
+            }
+            case 2 -> {
+                List<Animal> animals = shelter.getAllAnimals();
+                animals.forEach(System.out::println);
+            }
+            case 3 -> {
+                System.out.println("Select a species: ");
+                String species = scanner.next();
+                List<Animal> listedAnimals = shelter.findBySpecies(species);
+                listedAnimals.forEach(System.out::println);
+            }
+            case 4 -> {
+                List<Animal> availableAnimals = shelter.findAvailableAnimals();
+                availableAnimals.forEach(System.out::println);
+            }
+            case 5 -> {
+                System.out.println("Write an animal id: ");
+                String id = scanner.next();
+                shelter.markAsAdopted(id);
+            }
+            default -> {
+                System.out.println("Input must be a number from 0 to 5");
+            }
                 }
             }
         } catch(InputMismatchException e) {
