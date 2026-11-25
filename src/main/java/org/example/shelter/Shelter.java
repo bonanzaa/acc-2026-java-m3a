@@ -5,8 +5,7 @@ import org.example.model.Animal;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 public class Shelter <T extends Animal>{
     private final List<T> animals = new ArrayList<>();

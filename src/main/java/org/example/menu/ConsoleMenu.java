@@ -40,7 +40,7 @@ public class ConsoleMenu {
                     int age = scanner.nextInt();
                     switch (choose) {
                         case 1 -> {
-                            shelter.addAnimal(new Dog(new AnimalId(), name, 3));
+                            shelter.addAnimal(new Dog(new AnimalId(), name, age));
                         }
                         case 2 -> {
                             shelter.addAnimal(new Cat(new AnimalId(), name, age));
