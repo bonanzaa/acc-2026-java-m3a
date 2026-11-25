@@ -1,6 +1,6 @@
 package org.example.menu;
 
-import org.example.model.Animal;
+import org.example.model.*;
 import org.example.shelter.Shelter;
 
 import java.awt.*;
@@ -21,28 +21,52 @@ public class ConsoleMenu {
             System.out.println("Choose what you want to do : ");
             int number = scanner.nextInt();
             switch(number) {
-                case 0:
+                case 0 ->
                     active = false;
-                    break;
-                case 2:
+                case 1 ->
+                {
+                    System.out.println("""
+                            Choose animal type:
+                            1. Dog
+                            2. Cat
+                            3. Bird""");
+                    int choose = scanner.nextInt();
+                    System.out.println("Enter animal name: ");
+                    String name = scanner.next();
+                    System.out.println("Enter animal age: ");
+                    int age = scanner.nextInt();
+                    switch(choose) {
+                        case 1 -> {
+                            shelter.addAnimal(new Dog(new AnimalId(), name, 3));
+                        }
+                        case 2 -> {
+                            shelter.addAnimal(new Cat(new AnimalId(), name, age));
+                        }
+                        case 3 -> {
+                            shelter.addAnimal(new Bird(new AnimalId(), name, age));
+                        }
+                    }
+                }
+                case 2 -> {
                     List<Animal> animals = shelter.getAllAnimals();
                     animals.forEach(System.out::println);
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     System.out.println("Select a species: ");
+
                     String species = scanner.next();
                     List<Animal> listedAnimals = shelter.findBySpecies(species);
                     listedAnimals.forEach(System.out::println);
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     List<Animal> availableAnimals = shelter.findAvailableAnimals();
                     availableAnimals.forEach(System.out::println);
-                    break;
-                case 5:
+                }
+                case 5 -> {
                     System.out.println("Write an animal id: ");
                     String id = scanner.next();
                     shelter.markAsAdopted(id);
-                    break;
+                }
             }
         }
 
