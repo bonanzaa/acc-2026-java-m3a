@@ -1,6 +1,6 @@
 package org.example.model;
 
-public sealed abstract class Animal permits Dog,Cat,Bird {
+public sealed abstract class Animal permits Monkey, Bird, Cat, Dog, Lizard {
     private final AnimalId id;
     private String name;
     private int age;
@@ -37,6 +37,6 @@ public sealed abstract class Animal permits Dog,Cat,Bird {
 
     @Override
     public String toString(){
-        return id + " | " + name + " | " + age + " years old | " + getSpecies() + " | " + adoptionStatus;
+        return id + " | " + name + " | " + age + " years old | " + getSpecies() + " | " + adoptionStatus + "\n";
     }
 }
